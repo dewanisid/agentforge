@@ -7,6 +7,7 @@ from alembic import context
 
 from app.models.user import User
 from app.db.database import Base
+from app.models.task import Task
 
 
 # this is the Alembic Config object, which provides
