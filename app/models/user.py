@@ -1,8 +1,10 @@
+from __future__ import annotations
 import uuid
 from datetime import datetime
 
+
 from sqlalchemy import Boolean, DateTime, String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.database import Base
 
@@ -13,3 +15,5 @@ class User(Base):
     hashed_password: Mapped[str] = mapped_column(String, nullable=False)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    tasks: Mapped[list["Task"]] = relationship("Task", back_populates = "user")
+
